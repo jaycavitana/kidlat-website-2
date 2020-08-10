@@ -118,12 +118,10 @@ function App() {
   // return <AnimationRevealPage disabled></AnimationRevealPage>;
   return (
 
-    
+
     <Router>
       <Switch>
-        
-        
-        <Route path="/home" component={Home} />
+        <Route path="/" component={Home} />
         <Route path="/contactus" component={ContactUs} />
         <Route path="/privacy" component={Privacy} />
         <Route path="/terms" component={Terms} />
