@@ -59,7 +59,7 @@ export default ({
   SubmitButtonIcon = SignUpIcon,
   tosUrl = "terms",
   privacyPolicyUrl = "/privacy",
-  backtohome = "/home"
+  backtohome = "/"
 }) => (
   <AnimationRevealPage>
     <Container>

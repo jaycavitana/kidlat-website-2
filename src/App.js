@@ -121,12 +121,12 @@ function App() {
 
     <Router>
       <Switch>
-        <Route path="/home" component={Home} />
-        <Route path="/contactus" component={ContactUs} />
-        <Route path="/privacy" component={Privacy} />
-        <Route path="/terms" component={Terms} />
-        <Route path="/faqs" component={Faqs} />
-        <Route path="/RiderApplication" component={RiderApplication} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/contactus" component={ContactUs} />
+        <Route exact path="/privacy" component={Privacy} />
+        <Route exact path="/terms" component={Terms} />
+        <Route exact path="/faqs" component={Faqs} />
+        <Route exact path="/RiderApplication" component={RiderApplication} />
       </Switch>
     </Router>
   );
