@@ -3,12 +3,12 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
-import LogoImage from "images/logo-light.svg";
+import LogoImage from "images/kidlatLogo-white.png";
 import { ReactComponent as FacebookIcon } from "images/facebook-icon.svg";
 import { ReactComponent as TwitterIcon } from "images/twitter-icon.svg";
-import { ReactComponent as YoutubeIcon } from "images/youtube-icon.svg";
+// import { ReactComponent as YoutubeIcon } from "images/youtube-icon.svg";
 
-const Container = tw.div`relative bg-gray-900 text-gray-100 -mx-8 -mb-8 px-8`;
+const Container = tw.div`relative bg-black text-gray-100 -mx-8 -mb-8 px-8`;
 const Content = tw.div`max-w-screen-xl mx-auto pt-16 pb-8`
 const FiveColumns = tw.div`flex flex-wrap justify-between`;
 
@@ -22,7 +22,7 @@ const LinkListItem = tw.li`mt-3`;
 const Link = tw.a`border-b-2 border-transparent hocus:text-gray-300 hocus:border-gray-100 pb-1 transition duration-300`;
 
 const LogoContainer = tw.div`flex items-center justify-center lg:justify-start`;
-const LogoImg = tw.img`w-8`;
+const LogoImg = tw.img`w-10`;
 const LogoText = tw.h5`ml-2 text-xl font-black`;
 
 const CompanyAddress = tw.p`mt-4 max-w-xs font-medium text-sm mx-auto lg:mx-0 lg:mr-4 leading-loose text-center lg:text-left`;
@@ -53,7 +53,7 @@ export default () => {
             <CompanyAddress>
               123 Road, Meycuayan Bulacan
             </CompanyAddress>
-            
+
           </CompanyColumn>
           <Column>
             <ColumnHeading>Social Media</ColumnHeading>
@@ -64,34 +64,32 @@ export default () => {
               <SocialLink href="https://twitter.com">
                 <TwitterIcon />
               </SocialLink>
-              
+
             </SocialLinksContainer>
           </Column>
           <Column>
             <ColumnHeading>Kidlat</ColumnHeading>
             <LinkList>
               <LinkListItem>
-                <Link href="#">Become a Rider</Link>
+                <Link href="/RiderApplication">Become a Rider</Link>
               </LinkListItem>
               <LinkListItem>
                 <Link href="#">Become a Merchant</Link>
               </LinkListItem>
-             
+
             </LinkList>
           </Column>
           <Column>
             <ColumnHeading>Information</ColumnHeading>
             <LinkList>
-              
+
               <LinkListItem>
-                <Link href="#">Privacy Policy</Link>
+                <Link href="/privacy">Privacy Policy</Link>
               </LinkListItem>
               <LinkListItem>
-                <Link href="#">Terms of Service</Link>
+                <Link href="/terms">Terms of Service</Link>
               </LinkListItem>
-              <LinkListItem>
-                <Link href="#">Disclaimer</Link>
-              </LinkListItem>
+
             </LinkList>
           </Column>
           <Column>
@@ -103,10 +101,8 @@ export default () => {
               <LinkListItem>
                 <Link href="mailto:support@kidlat.com">support@Kidlat.com</Link>
               </LinkListItem>
-              <LinkListItem>
-                <Link href="contactus">Inquire</Link>
-              </LinkListItem>
-             
+
+
             </LinkList>
           </Column>
         </FiveColumns>

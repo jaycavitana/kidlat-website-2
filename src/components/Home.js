@@ -3,49 +3,52 @@ import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/TwoColumnWithInput.js";
-import Features from "components/features/ThreeColWithSideImage.js";
-import MainFeature from "components/features/TwoColWithButton.js";
-import MainFeature2 from "components/features/TwoColWithTwoHorizontalFeaturesAndButton.js";
+import Features from "components/features/ThreeColWithSideImageWithPrimaryBackground.js";
+// import MainFeature from "components/features/TwoColWithButton.js";
+// import MainFeature2 from "components/features/TwoColWithTwoHorizontalFeaturesAndButton.js";
 import FeatureWithSteps from "components/features/TwoColWithSteps.js";
 // import Pricing from "components/pricing/ThreePlans.js";
-import Testimonial from "components/testimonials/TwoColumnWithImageAndRating.js";
-import FAQ from "components/faqs/SingleCol.js";
-import GetStarted from "components/cta/GetStarted";
+// import Testimonial from "components/testimonials/TwoColumnWithImageAndRating.js";
+// import FAQ from "components/faqs/SingleCol.js";
+import GetStarted from "components/cta/GetStarted.js";
+import DownloadApp from "components/cta/DownloadApp.js";
 import Footer from "components/footers/FiveColumnWithBackground.js";
 // import heroScreenshotImageSrc from "images/hero-screenshot-1.png";
 import macHeroScreenshotImageSrc from "images/hero-screenshot-2.png";
-import prototypeIllustrationImageSrc from "images/prototype-illustration.svg";
-import { ReactComponent as BriefcaseIcon } from "feather-icons/dist/icons/briefcase.svg";
-import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sign.svg";
+// import prototypeIllustrationImageSrc from "images/prototype-illustration.svg";
+// import { ReactComponent as BriefcaseIcon } from "feather-icons/dist/icons/briefcase.svg";
+// import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sign.svg";
 
 export default () => {
-  const Subheading = tw.span`uppercase tracking-widest font-bold text-primary-500`;
-  const HighlightedText = tw.span`text-primary-900`;
+  const Subheading = tw.span`tracking-widest  text-black`;
+  // const Heading = tw.span`uppercase tracking-widest font-bold text-primary-500`;
+  const HighlightedText = tw.span`text-yellow-500`;
 
   return (
     <AnimationRevealPage>
       <Hero roundedHeaderButton={true} />
       <Features
-        subheading={<Subheading>Features</Subheading>}
+        // subheading={<Subheading>Amazing Features</Subheading>}
         heading={
-          <>
-            Our Services
-          </>
+          <HighlightedText>
+           Mga Serbisyo
+          </HighlightedText>
         }
       />
       <FeatureWithSteps
-        subheading={<Subheading>STEPS</Subheading>}
+
         heading={
           <>
-            Easy to <HighlightedText>Get Started.</HighlightedText>
+            Paano <HighlightedText>Mag-register?</HighlightedText>
           </>
         }
+        subheading={<Subheading>Napakadaling mag-register sa app upang ma-avail ang mga nabanggit na Kidlat services.</Subheading>}
         textOnLeft={false}
         imageSrc={macHeroScreenshotImageSrc}
         imageDecoratorBlob={true}
         decoratorBlobCss={tw`xl:w-40 xl:h-40 opacity-15 -translate-x-1/2 left-1/2`}
       />
-      <MainFeature2
+      {/* <MainFeature2
         subheading={<Subheading>VALUES</Subheading>}
         heading={
           <>
@@ -68,7 +71,7 @@ export default () => {
             iconContainerCss: tw`bg-red-300 text-red-800`
           }
         ]}
-      />
+      /> */}
       {/* <Testimonial
         subheading={<Subheading>Testimonials</Subheading>}
         heading={
@@ -100,7 +103,12 @@ export default () => {
         ]}
       /> */}
 
+
+      <DownloadApp/>
+
       <GetStarted/>
+
+
       <Footer />
     </AnimationRevealPage>
   );

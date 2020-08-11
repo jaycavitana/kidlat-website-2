@@ -9,11 +9,11 @@ import { SectionHeading, Subheading as SubheadingBase } from "components/misc/He
 import appleIconImageSrc from "images/apple-icon.png";
 import googlePlayIconImageSrc from "images/google-play-icon.png"
 
-const Container = tw(ContainerBase)`bg-gray-900 -mx-8`
+const Container = tw(ContainerBase)`bg-black -mx-8`
 const Content = tw(ContentWithPaddingXl)``
 const Row = tw.div`px-8 flex items-center relative z-10 flex-col lg:flex-row text-center lg:text-left justify-center`;
 
-const ColumnContainer = tw.div`max-w-2xl`
+const ColumnContainer = tw.div`max-w-2xl `
 const TextContainer = tw(ColumnContainer)``;
 const Text = tw(SectionHeading)`text-gray-100 lg:text-left max-w-none text-3xl leading-snug`;
 const Subheading = tw(SubheadingBase)`text-yellow-500 mb-4 tracking-wider`
@@ -36,12 +36,12 @@ const DecoratorBlob1 = tw(SvgDecoratorBlob1)`absolute bottom-0 left-0 w-80 h-80 
 const DecoratorBlob2 = tw(SvgDecoratorBlob1)`absolute top-0 right-0 w-80 h-80 transform  translate-x-20 -translate-y-64 text-gray-800 opacity-50`
 export default ({
   subheading = "Download App",
-  text = "Developers all over the world are happily using Treact.",
+  text = "Ang Kidlat App ay maaring ma-download dito:",
   link1Text = "App Store",
-  link1Url = "http://apple.com",
+  link1Url = "/home", //link app ng appstore
   link1IconSrc = appleIconImageSrc,
   link2Text = "Google Play",
-  link2Url = "http://play.google.com",
+  link2Url = "/home", //link app ng playstore
   link2IconSrc = googlePlayIconImageSrc,
   pushDownFooter = false,
   imageSrc = mockupImageSrc,

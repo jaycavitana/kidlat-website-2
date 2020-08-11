@@ -4,32 +4,32 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
-import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
+import useAnimatedNavToggler from "helpers/useAnimatedNavToggler.js";
 
-import logo from "../../images/kidlat-logo.png";
+import logo from "images/kidlat-logo.png";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 
 const Header = tw.header`
   flex justify-between items-center
-  max-w-screen-xl mx-auto
+  max-w-screen-xl mx-auto bg-yellow-400 p-4
 `;
 
-export const NavLinks = tw.div`inline-block`;
+export const NavLinks = tw.div`inline-block `;
 
 /* hocus: stands for "on hover or focus"
  * hocus:bg-primary-700 will apply the bg-primary-700 class on hover or focus
  */
 export const NavLink = tw.a`
   text-lg my-2 lg:text-sm lg:mx-6 lg:my-0
-  font-semibold tracking-wide transition duration-300
-  pb-1 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
+  font-semibold tracking-wide transition duration-300 text-black
+  pb-1 border-b-2 border-transparent hover:border-black hocus:text-black
 `;
 
 export const PrimaryLink = tw(NavLink)`
   lg:mx-0
-  px-8 py-3 rounded bg-primary-500 text-black border-2 border-primary-500
-  hocus:bg-white hocus:text-black hocus:border-2 border-gray-600
+  px-8 py-3 rounded bg-primary-500 text-black border-2 border-black
+  hocus:bg-white border-black hocus:text-black
 `;
 
 export const LogoLink = styled(NavLink)`
@@ -74,13 +74,13 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
       <NavLink href="/home">Home</NavLink>
       {/* <NavLink href="/">Our History</NavLink> */}
       <NavLink href="/contactus">Contact Us</NavLink>
-      <NavLink href="/faqs">Faqs</NavLink>
+      <NavLink href="/FAQS">Faqs</NavLink>
       {/* <NavLink href="/be-a-rider">Be a Rider</NavLink>
       <NavLink href="/be-a-merchant">Be a Merchant</NavLink> */}
       {/* <NavLink href="/#" tw="lg:ml-12!">
         Login
-      </NavLink> */}
-      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/RiderApplication">Apply as Rider</PrimaryLink>
+      </NavLink> css={roundedHeaderButton && tw`rounded-full`} -> para maging bilog yung button*/ }
+      <PrimaryLink href="/RiderApplication">Apply as Rider</PrimaryLink>
 
     </NavLinks>
   ];

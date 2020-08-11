@@ -31,15 +31,15 @@ const Textarea = styled(Input).attrs({as: "textarea"})`
   ${tw`h-24`}
 `
 
-const SubmitButton = tw(PrimaryButtonBase)`inline-block mt-8 text-black hocus:bg-black text-white`
+const SubmitButton = tw(PrimaryButtonBase)`inline-block mt-8 bg-yellow-500 text-black hocus:bg-black text-white`
 
 export default ({
-  subheading = "Contact Us",
-  heading = <>Feel free to <span tw="text-primary-500">get in touch</span> with us.</>,
-  description = "If you have any inquries just message us thorugh this page and we will get back to you as soon as possible!",
+  subheading = "",
+  heading = <>Feel free to <span tw="text-yellow-500">get in touch</span> with us.</>,
+  description = "Meron ka bang inquiries sa amin? I-message lamang kami dito at ikaw ay aming rereplayan As soon as possible!",
   submitButtonText = "Send",
   formAction = "#",
-  formMethod = "get",
+  formMethod = "post",
   textOnLeft = true,
 }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.

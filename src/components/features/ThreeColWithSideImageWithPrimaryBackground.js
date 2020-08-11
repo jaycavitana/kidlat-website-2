@@ -8,47 +8,48 @@ import { SectionDescription } from "components/misc/Typography.js";
 
 import defaultCardImage from "images/shield-icon.svg";
 
-import SupportIconImage from "images/support-icon.svg";
-import ShieldIconImage from "images/shield-icon.svg";
-import CustomizeIconImage from "images/customize-icon.svg";
-import FastIconImage from "images/fast-icon.svg";
-import ReliableIconImage from "images/reliable-icon.svg";
-import SimpleIconImage from "images/simple-icon.svg";
+import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-7.svg";
 
-const Container = tw.div`relative bg-primary-900 -mx-8 px-8 text-gray-100`;
+import pabiliIcon from "images/pabili.png";
+import padalaIcon from "images/deliver-1.png";
+import pasundoIcon from "images/motor.png";
+import palengkeIcon from "images/palengke.png";
+import kusinaIcon from "images/restau-2.png";
+import papilaIcon from "images/store-2.png";
+// import padalaIcon from "images/deliver-1.png";
 
+const Container = tw.div`relative bg-black -mx-8 px-8 text-gray-100`;
+const DecoratorBlobContainer = tw.div`absolute inset-0 overflow-hidden rounded-lg`
 const ThreeColumnContainer = styled.div`
-  ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-24`}
+  ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-xl mx-auto py-20 md:py-24`}
 `;
 const Subheading = tw(SubheadingBase)`mb-4 text-gray-100`;
 const Heading = tw(SectionHeading)`w-full`;
-const Description = tw(SectionDescription)`w-full text-center text-gray-300`;
+const Description = tw(SectionDescription)`w-full text-center text-white`;
 
 const VerticalSpacer = tw.div`mt-10 w-full`;
 
 const Column = styled.div`
   ${tw`md:w-1/2 lg:w-1/3 max-w-xs`}
 `;
+const DecoratorBlob1 = tw(SvgDecoratorBlob1)`absolute bottom-0 left-0 w-80 h-80 transform -translate-x-20 translate-y-32 text-gray-800 opacity-50`
+const DecoratorBlob2 = tw(SvgDecoratorBlob1)`absolute top-0 right-0 w-80 h-80 transform  translate-x-20 -translate-y-64 text-gray-800 opacity-50`
 
-const Card = styled.div`
-  ${tw`flex flex-col items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8`}
+const Card = styled.a`
+  ${tw`flex flex-col items-center text-center h-full mx-4 px-4 py-8 rounded transition-transform duration-300 hover:cursor-pointer transform hover:scale-105 `}
   .imageContainer {
-    ${tw`bg-gray-100 text-center rounded-full p-5 flex-shrink-0`}
+    ${tw`text-center rounded-full p-4 bg-gray-100 mb-4 `}
     img {
-      ${tw`w-6 h-6`}
+      ${tw`w-20 h-20`}
     }
   }
 
-  .textContainer {
-    ${tw`mt-6`}
-  }
-
   .title {
-    ${tw`tracking-wider font-bold text-xl leading-none`}
+    ${tw`mt-4 font-bold text-2xl leading-none`}
   }
 
   .description {
-    ${tw`mt-2 font-normal text-gray-400 leading-snug`}
+    ${tw`mt-4 text-sm font-medium text-gray-400`}
   }
 `;
 
@@ -56,7 +57,7 @@ export default ({
   cards = null,
   heading = "Amazing Features",
   subheading = "",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  description = "Gamit ang mobile app, maaari mong i-avail ang mga sumusunod na Kidlat Services."
 }) => {
   /*
    * This componets has an array of object denoting the cards defined below. Each object in the cards array can have the key (Change it according to your need, you can also add more objects to have more cards in this feature component) or you can directly pass this using the cards prop:
@@ -68,16 +69,38 @@ export default ({
 
   const defaultCards = [
     {
-      imageSrc: ShieldIconImage,
-      title: "Secure",
-      description: "We strictly only deal with vendors that provide top notch security infrastructure."
+      imageSrc: pabiliIcon,
+      title: "Pabili",
+      description: "Maaari kang magpabili sa ating mga Kidlat riders ng mga nais mong items o goods mula sa iyong paboritong tindahan. Makatitiyak kanga ng iyong pinabili ay makakarating sa’yo nang mabilis at nasa tamang kondisyon.  "
     },
-    { imageSrc: SupportIconImage, title: "24/7 Support" },
-    { imageSrc: CustomizeIconImage, title: "Customizable" },
-    { imageSrc: ReliableIconImage, title: "Reliable" },
-    { imageSrc: FastIconImage, title: "Fast" },
-    { imageSrc: SimpleIconImage, title: "Easy" }
+    {
+      imageSrc: padalaIcon,
+      title: "Padala",
+      description: "May mga nais ka bang ipadalang gamit gaya na lamang ng dokumento o produkto? Sagot ka ng ating mga Kidlat rider. Magbook lamang sa app at tiyak na makakarating sa padadalhan ang iyong padalang gamit."
+    },
+    {
+      imageSrc: pasundoIcon,
+      title: "Pasundo",
+      description: "Para sa hassle-free na ride, pwede ka ring magbook ng ating Pasundo service. Ang ating Kidlat rider na ang bahala sa’yong maghatid o magsundo. Dahil rehistrado ang mga riders, makatitiyak kang ikaw ay ligtas at mabilis na makakarating sa iyong patutunguhan. "
+    },
+    {
+      imageSrc: palengkeIcon,
+      title: "Palengke",
+      description: "May nais ka bang ipamalengke ngunit wala kang oras? Sagot kang muli ng ating mga Kidlat rider. Maaari kang magpabili ng mga produkto mula sa pinakamalapit na palengke."
+    },
+    {
+      imageSrc: kusinaIcon,
+      title: "Kusina",
+      description: "Meron ka bang cravings? I-satisfy natin yan gamit ang iyong Kidlat app. Maaari ka ng bumili ng iyong mga paboritong pagkain mula sa ating mga partner businesses. Umorder gamit ang app at ang ating Kidlat riders na ang maghahatid nito sa iyong bahay."
+    },
+    {
+      imageSrc: papilaIcon,
+      title: "Papila",
+      description: "Madami ka na bang bills na malapit na mag-due gaya ng sa Meralco at iba pa? Maaari ka ring magpapila sa ating mga Kidlat riders upang sila na ang magbayad para sa iyo."
+    },
+
   ];
+
 
   if (!cards) cards = defaultCards;
 
@@ -91,19 +114,24 @@ export default ({
         {cards.map((card, i) => (
           <Column key={i}>
             <Card>
-              <span className="imageContainer">
+              <span className="imageContainer" >
                 <img src={card.imageSrc || defaultCardImage} alt="" />
               </span>
               <span className="textContainer">
-                <span className="title">{card.title || "Fully Secure"}</span>
+                <span className="title" >{card.title || "Fully Secure"}</span>
                 <p className="description">
                   {card.description || "Lorem ipsum donor amet siti ceali ut enim ad minim veniam, quis nostrud."}
                 </p>
               </span>
             </Card>
           </Column>
+
         ))}
       </ThreeColumnContainer>
+      <DecoratorBlobContainer>
+          <DecoratorBlob1/>
+          <DecoratorBlob2/>
+        </DecoratorBlobContainer>
     </Container>
   );
 };
