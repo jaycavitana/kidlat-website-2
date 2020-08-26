@@ -69,7 +69,7 @@ export default ({
             <LogoImage src={logo} />
             <Heading>{headingText}</Heading>
             <p tw="text-sm text-gray-600 text-center">
-                  Applicants must be 21 - 55 years old only
+                  Applicants must be 21 - 55 years old onlyxx
                 </p>
                 <p tw="mb-6 text-sm text-gray-600 text-center">
                   For 51-55 years old, please attached a medical certificate, proving that you are fit to drive
