@@ -262,15 +262,6 @@ export default ({
                 {/*CIVIL STAT- SSS - TIN   */}
 
                 <div tw="flex flex-wrap -mx-4 mb-6">
-                    <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
-
-                        <label tw="block  tracking-wide text-gray-700 text-sm ">
-                                Civil Status
-                            </label>
-                            <input  type="radio" value="single"  name="single"/> Single
-                            <input tw="ml-3"type="radio" value="married" name="married" /> Married
-
-                    </div>
 
                     <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
                         <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="SSS" name="sssnumber"  />
@@ -298,21 +289,8 @@ export default ({
 
                     </div>
 
-                    <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
-                        <label tw="block  tracking-wide text-gray-700 text-sm ">
-                           <i>Note: Dial *#06# to view IMEI1 </i>
-                        </label>
-                        <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" placeholder="IMEI1" name="imei1"/>
+                   
 
-                    </div>
-
-                    <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
-                        <label tw="block  tracking-wide text-gray-700 text-sm ">
-                            IME1 Screenshot
-                        </label>
-                        <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" name="imeipic" />
-
-                    </div>
 
                 </div>
 
@@ -418,7 +396,7 @@ export default ({
 
                 <Subheading>Emergency Contact Person</Subheading>
                 <p tw="block  tracking-wide text-gray-700 text-sm mt-6">
-                   Contact Person 1:
+                   Contact Person:
                 </p>
                 <div tw="flex flex-wrap -mx-2 mb-6">
 
@@ -433,21 +411,6 @@ export default ({
                     </div>
                 </div>
 
-                <p tw="block  tracking-wide text-gray-700 text-sm mt-6">
-                   Contact Person 2:
-                </p>
-                <div tw="flex flex-wrap -mx-2 mb-6">
-
-                    <div tw="w-full md:w-1/2 px-3 mb-6 md:mb-0 mt-2">
-                        <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="Full Name" name="contactperson2" />
-
-                    </div>
-
-                    <div tw="w-full md:w-1/2 px-3 mb-6 md:mb-0 mt-2">
-                        <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="Contact Number" name="contactpersonnumber2" />
-
-                    </div>
-                </div>
 
                 {/*APPLICATION INFORMATION*/}
 
@@ -500,15 +463,6 @@ export default ({
 
                     <div tw="w-full md:w-1/2 px-3 mb-6 md:mb-0 mt-2">
                         <label tw="block  tracking-wide text-gray-700 text-sm ">
-                            Do you have a seperate android phone that you will be using in Kidlat?
-                        </label>
-                        <input  type="radio" value="not seperate phone" name="noseperatephone" /> NO
-                        <input tw="ml-3"type="radio" value="seperate phone"  name="haveseperatephone"/> YES
-
-                    </div>
-
-                    <div tw="w-full md:w-1/2 px-3 mb-6 md:mb-0 mt-2">
-                        <label tw="block  tracking-wide text-gray-700 text-sm ">
                             When and Where you can attend Kidlat Seminar?
                         </label>
                         <input  type="radio" value="texted for seminar" name="iftexted"/> When Kidlat texted me
@@ -530,7 +484,7 @@ export default ({
 
                 <div tw="flex flex-wrap -mx-3 mb-3">
                     <div tw="w-full px-3 text-xs">
-                        <input tw="ml-3"type="checkbox" value="agree" name="agree1" /> I declare that I have personally read and completed the Angkas application and that the information I have written is true to the best of my knowledge.
+                        <input tw="ml-3"type="checkbox" value="agree" name="agree1" /> I declare that I have personally read and completed the Kidlat application and that the information I have written is true to the best of my knowledge.
                     </div>
 
                 </div>
