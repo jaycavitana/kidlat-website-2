@@ -106,7 +106,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ContactUs from "components/ContactUs.js";
 import Home from "components/Home.js";
 import Faqs from "components/Faqs.js";
-import RiderApplication from "components/RiderApplication.js";
+import RiderApplications from "components/RiderApplications.js";
 import Terms from "components/Terms.js";
 import Privacy from "components/Privacy.js";
 
@@ -126,7 +126,7 @@ function App() {
         <Route exact path="/privacy" component={Privacy} />
         <Route exact path="/terms" component={Terms} />
         <Route exact path="/faqs" component={Faqs} />
-        <Route exact path="/RiderApplication" component={RiderApplication} />
+        <Route exact path="/RiderApplication" component={RiderApplications} />
       </Switch>
     </Router>
   );

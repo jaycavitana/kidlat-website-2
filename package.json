@@ -19,6 +19,7 @@
     "react-slick": "^0.25.2",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.0.1",
+    "sweetalert2": "^9.17.1",
     "tailwindcss": "^1.2.0",
     "twin.macro": "^1.0.0-alpha.7",
     "use-in-view": "^1.0.15"
