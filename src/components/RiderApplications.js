@@ -44,40 +44,63 @@ const RiderApplications = ({
 }) => {
 
   const [formData, setFormData] = useState({
-    is_owner: "",
-    first_name: "",
-    middle_name: "",
-    last_name: "",
-    house_unit: "",
-    barangay: "",
-    city_province: "",
-    age: "",
-    birthday: "",
-    birthplace: "",
-    gender: "",
-    mobile_number: "",
-    email: "",
-    sss: "",
-    tin: "",
-    cellphone_brand: "",
-    brand: "",
-    motorcycleModel: "",
-    yr_model: "",
-    engine_number: "",
-    plate_number: "",
-    piston_displacement: "",
-    chasis_number: "",
-    motorOr: "",
-    driversLicense: "",
-    licenseNumber: "",
-    licenseExpiry: "",
-    emergencyContactPerson: "",
-    emergencyContactNumber: "",
-    currentWork: "",
-    bikerGroup: "",
-    referrer: "",
-    gcashNumber: "",
-    or_expiry: ""
+    is_owner: "1",
+    first_name: "Josiah",
+    middle_name: "Perez",
+    last_name: "Cavitana",
+    house_unit: "x",
+    barangay: "x",
+    city_province: "x",
+    age: "", //remove
+    birthday: "1998-04-15",
+    birthplace: "x",
+    gender: "x",
+    mobile_number: "09075967827",
+    email: "jaypcavitana@gmail.com",
+    sss: "x", 
+    tin: "x", 
+    cellphone_brand: "", //remove
+    brand: "x",
+    motorcycleModel: "x",
+    yr_model: "x",
+    engine_model: "x", //this should be engine model (change na lang sa form - this is initially engine_number)
+    plate_number: "x",
+    piston_displacement: "", //remove
+    chasis_number: "", //remove
+    motorOr: "", //remove
+    driversLicense: "", //remove
+    licenseNumber: "x",
+    licenseExpiry: "2020-01-01",
+    emergencyContactPerson: "x",
+    emergencyContactNumber: "x",
+    currentWork: "x",
+    bikerGroup: "x",
+    referrer: "x",
+    gcashNumber: "x",
+    or_expiry: "" //remove
+
+    //add the following
+    /*
+    is_biker = '1' or '0'
+    will_attend_seminar = '1' or '0'
+    is_professional = '1' or '0'
+    agree1 = '1' or '0'
+    agree2 = '1' or '0'
+    agree3 = '1' or '0'
+    agree4 = '1' or '0'
+    agree5 = '1' or '0'
+    agree6 = '1' or '0'
+    agree7 = '1' or '0'
+    nbi_clearance_url
+    police_clearance_url
+    drivers_license_url
+    or_url,
+    cr_url,
+    government_id_url
+
+    All fields should be 43
+    Please match everything here dun sa const {} = formData
+    */
     });
 
     const {
@@ -159,7 +182,7 @@ const RiderApplications = ({
             //   icon: 'success',
             //   confirmButtonText: 'OK'
             // })
-          console.log(res.data.message));
+          console.log(res.data));
           console.log(formData);
         }catch (err){
           console.log('nagerror');
