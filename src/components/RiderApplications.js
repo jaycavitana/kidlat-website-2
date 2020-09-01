@@ -43,6 +43,16 @@ const RiderApplications = ({
   backtohome = "/"
 }) => {
 
+  const allInputs = {imgUrl: ''}
+  const [imageAsFile, setImageAsFile] = useState('')
+  const [imageAsUrl, setImageAsUrl] = useState(allInputs)
+
+ console.log(imageAsFile)
+ const handleImageAsFile = (e) => {
+      const image = e.target.files[0]
+      setImageAsFile(imageFile => (image))
+  }
+
   const [formData, setFormData] = useState({
     is_owner: "",
     first_name: "",
@@ -136,6 +146,12 @@ const RiderApplications = ({
 
       const onSubmit = async (e) => {
         e.preventDefault();
+
+        if(imageAsFile === '' ) {
+          console.error(`not an image, the image file is a ${typeof(imageAsFile)}`)
+        }
+
+        const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile)
       //   const uploadTask = storage.ref(receipts/${validIDname}.${extension}).put(this.state.valid_id.file.originFileObj);
       // uploadTask.on('state_changed',
       // (snapshot) => {
@@ -204,7 +220,7 @@ const RiderApplications = ({
                           <label tw="block  tracking-wide text-gray-700 text-sm ">
                               NBI Clearance
                           </label>
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" name="nbiclearance"/>
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" onChange={handleImageAsFile} name="nbiclearance"/>
 
                       </div>
 
@@ -212,7 +228,7 @@ const RiderApplications = ({
                           <label tw="block  tracking-wide text-gray-700 text-sm ">
                               Police/Brgy. Clearance
                           </label>
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" name="police-brgyclearance" />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" onChange={handleImageAsFile} name="police-brgyclearance" />
 
                       </div>
 
@@ -220,7 +236,7 @@ const RiderApplications = ({
                           <label tw="block  tracking-wide text-gray-700 text-sm ">
                               Professional Driver's License
                           </label>
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" name="DriversLiscense" />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" onChange={handleImageAsFile} name="DriversLiscense" />
 
                       </div>
 
@@ -232,7 +248,7 @@ const RiderApplications = ({
                           <label tw="block  tracking-wide text-gray-700 text-xs ">
                              Motorcyle's CR
                           </label>
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" name="motorcr" />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" onChange={handleImageAsFile} name="motorcr" />
 
                       </div>
 
@@ -240,7 +256,7 @@ const RiderApplications = ({
                           <label tw="block  tracking-wide text-gray-700 text-xs ">
                               Motorcyle's OR
                           </label>
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" name=" motoror" />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" onChange={handleImageAsFile} name="motoror" />
 
                       </div>
 
@@ -248,7 +264,7 @@ const RiderApplications = ({
                           <label tw="block  tracking-wide text-gray-700 text-sm ">
                              Goverment ID
                           </label>
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" name="govid" />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" onChange={handleImageAsFile} name="govid" />
 
                       </div>
 
