@@ -7,7 +7,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import illustration from "images/signup-illustration.svg";
 import logo from "images/kidlatLogo.png";
 import Swal from 'sweetalert2'
-// import {storage} from 'firebase'
+import {storage} from "../firebase/firebase"
 // import googleIconImageSrc from "images/google-icon.png";
 // import twitterIconImageSrc from "images/twitter-icon.png";
 import { ReactComponent as SignUpIcon } from "feather-icons/dist/icons/user-plus.svg";
@@ -46,13 +46,73 @@ const RiderApplications = ({
   const allInputs = {imgUrl: ''}
   const [imageAsFile, setImageAsFile] = useState('')
   const [imageAsUrl, setImageAsUrl] = useState(allInputs)
-
+  var image = ""
  console.log(imageAsFile)
  const handleImageAsFile = (e) => {
       const image = e.target.files[0]
       setImageAsFile(imageFile => (image))
   }
 
+
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    if(imageAsFile === '' ) {
+      console.error(`not an image, the image file is a ${typeof(imageAsFile)}`)
+    }
+
+    const uploadTask = storage.ref(`/images/requirements/${imageAsFile.name}`).put(imageAsFile)
+    uploadTask.on('state_changed',
+    (snapShot) => {
+      //takes a snap shot of the process as it is happening
+      console.log(snapShot)
+    }, (err) => {
+      //catches the errors
+      console.log(err)
+    }, () => {
+      // gets the functions from storage refences the image storage in firebase by the children
+      // gets the download url then sets the image from firebase as the value for the imgUrl key:
+      storage.ref('images/requirements').child(imageAsFile.name).getDownloadURL()
+       .then(fireBaseUrl => {
+         setImageAsUrl(prevObject => ({...prevObject, imgUrl: fireBaseUrl}))
+                 // console.log(fireBaseUrl)
+
+                 try{
+                   axios.post('http://kidlat-api.herokuapp.com/Riders/', formData)
+                   .then(res =>
+                     Swal.fire({
+                       title: 'Success!',
+                       text: 'Your application has been submitted',
+                       icon: 'success',
+                       confirmButtonText: 'OK'
+                     })
+                   // console.log(res.data)
+                 )
+                   .catch(error =>
+                     Swal.fire({
+                       title: 'Something is wrong!',
+                       text: error,
+                       icon: 'error',
+                       confirmButtonText: 'OK'
+                     }),
+                     // console.log(error);
+                     // var errorMsg = error;
+                   );
+                   // console.log(formData);
+                 }catch (error){
+                   console.log(error.response);
+                 }
+       })
+    })
+
+
+
+  }
+
+  var imageRequirement = imageAsUrl.imgUrl;
+  console.log(imageRequirement)
+  var fake = "www.facebook.com"
   const [formData, setFormData] = useState({
     is_owner: "1",
     first_name: "Josiah",
@@ -61,24 +121,18 @@ const RiderApplications = ({
     house_unit: "x",
     barangay: "x",
     city_province: "x",
-    age: "", //remove
     birthday: "1998-04-15",
     birthplace: "x",
     gender: "x",
     mobile_number: "09075967827",
-    email: "jaypcavitana@gmail.com",
-    sss: "x", 
-    tin: "x", 
-    cellphone_brand: "", //remove
+    email: "jaypcavitana@gmailxxxxsss.com",
+    sss: "x",
+    tin: "x",
     brand: "x",
     motorcycleModel: "x",
     yr_model: "x",
     engine_model: "x", //this should be engine model (change na lang sa form - this is initially engine_number)
     plate_number: "x",
-    piston_displacement: "", //remove
-    chasis_number: "", //remove
-    motorOr: "", //remove
-    driversLicense: "", //remove
     licenseNumber: "x",
     licenseExpiry: "2020-01-01",
     emergencyContactPerson: "x",
@@ -87,129 +141,74 @@ const RiderApplications = ({
     bikerGroup: "x",
     referrer: "x",
     gcashNumber: "x",
-    or_expiry: "" //remove
-
-    //add the following
-    /*
-    is_biker = '1' or '0'
-    will_attend_seminar = '1' or '0'
-    is_professional = '1' or '0'
-    agree1 = '1' or '0'
-    agree2 = '1' or '0'
-    agree3 = '1' or '0'
-    agree4 = '1' or '0'
-    agree5 = '1' or '0'
-    agree6 = '1' or '0'
-    agree7 = '1' or '0'
-    nbi_clearance_url
-    police_clearance_url
-    drivers_license_url
-    or_url,
-    cr_url,
-    government_id_url
-
-    All fields should be 43
-    Please match everything here dun sa const {} = formData
-    */
+    is_biker: '1',
+    will_attend_seminar : "1",
+    is_professional : "1",
+    agree1 : "1",
+    agree2 : "1",
+    agree3 : "1",
+    agree4 : "1",
+    agree5 : "1",
+    agree6 : "1",
+    agree7 : "1",
+    nbi_clearance_url: fake,
+    police_clearance_url:imageRequirement,
+    drivers_license_url: imageRequirement,
+    or_url: imageRequirement,
+    cr_url: imageRequirement,
+    government_id_url: imageRequirement
     });
 
     const {
-        is_owner,
-        first_name,
-        middle_name,
-        last_name,
-        house_unit,
-        barangay,
-        city_province,
-        age,
-        birthday,
-        birthplace,
-        gender,
-        mobile_number,
-        email,
-        sss,
-        tin,
-        cellphone_brand,
-        brand,
-        motorcycleModel,
-        yr_model,
-        engine_number,
-        plate_number,
-        piston_displacement,
-        chasis_number,
-        motorOr,
-        driversLicense,
-        licenseNumber,
-        licenseExpiry,
-        emergencyContactPerson,
-        emergencyContactNumber,
-        currentWork,
-        bikerGroup,
-        referrer,
-        gcashNumber,
-        or_expiry,
-        nbi_clearance_url,
-        police_clearance_url,
-        drivers_license_url,
-        or_url,
-        cr_url,
-        government_id_url,
-        will_attend_seminar,
-        agree1,
-        agree2,
-        agree3,
-        agree4,
-        agree5,
-        agree6,
-        agree7
+      is_owner,
+      first_name,
+      middle_name,
+      last_name,
+      house_unit,
+      barangay,
+      city_province,
+      birthday,
+      birthplace,
+      gender,
+      mobile_number,
+      email,
+      sss,
+      tin,
+      brand,
+      motorcycleModel,
+      yr_model,
+      engine_model,
+      plate_number,
+      licenseNumber,
+      licenseExpiry,
+      emergencyContactPerson,
+      emergencyContactNumber,
+      currentWork,
+      bikerGroup,
+      referrer,
+      gcashNumber,
+      is_biker,
+      will_attend_seminar,
+      is_professional,
+      agree1,
+      agree2,
+      agree3,
+      agree4,
+      agree5,
+      agree6,
+      agree7,
+      nbi_clearance_url,
+      police_clearance_url,
+      drivers_license_url,
+      or_url,
+      cr_url,
+      government_id_url
       } = formData;
 
       const onChange = (e) =>
       setFormData ({...formData, [e.target.name] : e.target.value});
 
-      const onSubmit = async (e) => {
-        e.preventDefault();
 
-        if(imageAsFile === '' ) {
-          console.error(`not an image, the image file is a ${typeof(imageAsFile)}`)
-        }
-
-        const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile)
-      //   const uploadTask = storage.ref(receipts/${validIDname}.${extension}).put(this.state.valid_id.file.originFileObj);
-      // uploadTask.on('state_changed',
-      // (snapshot) => {
-      //   //progress function .....
-      //   console.log('snapshot',snapshot);
-      // },
-      // (error) => {
-      //   //error function .....
-      //   console.log(error);
-      // },
-      // () => {
-      //   //complete function .....
-      //   storage.ref(receipts/).child(${validIDname}.${extension}).getDownloadURL().then(url => {
-
-        try{
-          axios.post('http://kidlat-api.herokuapp.com/Riders/', formData)
-          .then(res =>
-            // Swal.fire({
-            //   title: 'Success!',
-            //   text: 'Your application has been submitted',
-            //   icon: 'success',
-            //   confirmButtonText: 'OK'
-            // })
-          console.log(res.data));
-          console.log(formData);
-        }catch (err){
-          console.log('nagerror');
-        }
-        // Swal.fire({
-        //   title: 'Error!',
-        //   text: 'Do you want to continue',
-        //   icon: 'error',
-        //   confirmButtonText: 'Cool'
-        // })
-      }
 
       console.log(formData);
 
@@ -363,13 +362,15 @@ const RiderApplications = ({
                   </div>
 
                   {/* AGE - BIRTHDAY - BIRTHPLACE  */}
+
                   <div tw="flex flex-wrap -mx-4 mb-6">
-
-                      <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
-
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text"  onChange={(e) => onChange(e)} value={age} placeholder="Age" name="age"/>
-
-                      </div>
+                    {/*
+                  //
+                  //     <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
+                  //
+                  //         <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text"  onChange={(e) => onChange(e)} value={age} placeholder="Age" name="age"/>
+                  //
+                  //     </div> */}
 
                       <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 -mt-4">
                       <label tw="block  tracking-wide text-gray-700 text-sm ">
@@ -432,20 +433,21 @@ const RiderApplications = ({
 
                   {/* PHONE BRAND MODEL - MOBNUM - EMAIL  */}
                   <Subheading>Mobile Phone Information</Subheading>
-                  <div tw="flex flex-wrap -mx-3 mb-2">
-
-                      <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
-                          <label tw="block  tracking-wide text-gray-700 text-sm ">
-                              Mobile Phone Brand
-                          </label>
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" placeholder="Cellhone Brand" onChange={(e) => onChange(e)} value={cellphone_brand} name="cellphone_brand" />
-
-                      </div>
-
-
-
-
-                  </div>
+                  {/*
+                  // <div tw="flex flex-wrap -mx-3 mb-2">
+                  //
+                  //     <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
+                  //         <label tw="block  tracking-wide text-gray-700 text-sm ">
+                  //             Mobile Phone Brand
+                  //         </label>
+                  //         <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" placeholder="Cellhone Brand" onChange={(e) => onChange(e)} value={cellphone_brand} name="cellphone_brand" />
+                  //
+                  //     </div>
+                  //
+                  //
+                  //
+                  //
+                  // </div> */}
 
 
                   <Subheading>Motorcycle & License Information</Subheading>
@@ -475,7 +477,7 @@ const RiderApplications = ({
 
                       <div tw="w-full md:w-1/4 px-3 mb-6 md:mb-0 mt-2">
 
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" placeholder="Motorcycle Engine Number" onChange={(e) => onChange(e)} value={engine_number} name="engine_number"/>
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" placeholder="Motorcycle Engine Number" onChange={(e) => onChange(e)} value={engine_model} name="engine_model"/>
 
                       </div>
 
@@ -492,25 +494,25 @@ const RiderApplications = ({
 
                       </div>
 
-                      <div tw="w-full md:w-1/4 px-3 mb-6 md:mb-0 mt-2">
+                      {/* <div tw="w-full md:w-1/4 px-3 mb-6 md:mb-0 mt-2">
+                      //
+                      //     <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" placeholder="Piston Displacement" onChange={(e) => onChange(e)} value={piston_displacement} name="piston_displacement"/>
+                      //
+                      // </div>
 
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" placeholder="Piston Displacement" onChange={(e) => onChange(e)} value={piston_displacement} name="piston_displacement"/>
+                      // <div tw="w-full md:w-1/4 px-3 mb-6 md:mb-0 mt-2">
+                      //
+                      //     <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" placeholder="Motorcycle Chasis Number" onChange={(e) => onChange(e)} value={chasis_number} name="chasis_number" />
+                      //
+                      // </div>
 
-                      </div>
-
-                      <div tw="w-full md:w-1/4 px-3 mb-6 md:mb-0 mt-2">
-
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" placeholder="Motorcycle Chasis Number" onChange={(e) => onChange(e)} value={chasis_number} name="chasis_number" />
-
-                      </div>
-
-                      <div tw="w-full md:w-1/4 px-3 mb-6 md:mb-0 -mt-4">
-                      <label tw="block  tracking-wide text-gray-700 text-sm ">
-                              Motor OR Expiry
-                          </label>
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="date" placeholder="Motorcycle Engine Number" onChange={(e) => onChange(e)} value={or_expiry} name="or_expiry"/>
-
-                      </div>
+                      /* <div tw="w-full md:w-1/4 px-3 mb-6 md:mb-0 -mt-4">
+                      // <label tw="block  tracking-wide text-gray-700 text-sm ">
+                      //         Motor OR Expiry
+                      //     </label>
+                      //     <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="date" placeholder="Motorcycle Engine Number" onChange={(e) => onChange(e)} value={or_expiry} name="or_expiry"/>
+                      //
+                      // </div> */}
 
                   </div>
 
