@@ -60,6 +60,12 @@ const RiderApplications = ({
 
     if(imageAsFile === '' ) {
       console.error(`not an image, the image file is a ${typeof(imageAsFile)}`)
+      Swal.fire({
+        title: 'Something is wrong!',
+        text: "You need to upload the documents",
+        icon: 'error',
+        confirmButtonText: 'OK'
+      })
     }
 
     const uploadTask = storage.ref(`/images/requirements/${imageAsFile.name}`).put(imageAsFile)
@@ -89,14 +95,14 @@ const RiderApplications = ({
                      })
                    // console.log(res.data)
                  )
-                   .catch(error =>
+                   .catch(err =>
                      Swal.fire({
                        title: 'Something is wrong!',
                        text: error,
                        icon: 'error',
                        confirmButtonText: 'OK'
                      }),
-                     // console.log(error);
+                     // console.log(err.message)
                      // var errorMsg = error;
                    );
                    // console.log(formData);
@@ -112,51 +118,93 @@ const RiderApplications = ({
 
   var imageRequirement = imageAsUrl.imgUrl;
   console.log(imageRequirement)
-  var fake = "www.facebook.com"
   const [formData, setFormData] = useState({
-    is_owner: "1",
-    first_name: "Josiah",
-    middle_name: "Perez",
-    last_name: "Cavitana",
-    house_unit: "x",
-    barangay: "x",
-    city_province: "x",
-    birthday: "1998-04-15",
-    birthplace: "x",
-    gender: "x",
-    mobile_number: "09075967827",
-    email: "jaypcavitana@gmailxxxxsss.com",
-    sss: "x",
-    tin: "x",
-    brand: "x",
-    motorcycleModel: "x",
-    yr_model: "x",
-    engine_model: "x", //this should be engine model (change na lang sa form - this is initially engine_number)
-    plate_number: "x",
-    licenseNumber: "x",
-    licenseExpiry: "2020-01-01",
-    emergencyContactPerson: "x",
-    emergencyContactNumber: "x",
-    currentWork: "x",
-    bikerGroup: "x",
-    referrer: "x",
-    gcashNumber: "x",
-    is_biker: '1',
-    will_attend_seminar : "1",
-    is_professional : "1",
-    agree1 : "1",
-    agree2 : "1",
-    agree3 : "1",
-    agree4 : "1",
-    agree5 : "1",
-    agree6 : "1",
-    agree7 : "1",
-    nbi_clearance_url: fake,
+    is_owner: "",
+    first_name: "",
+    middle_name: "",
+    last_name: "",
+    house_unit: "",
+    barangay: "",
+    city_province: "",
+    birthday: "",
+    birthplace: "",
+    gender: "",
+    mobile_number: "",
+    email: "",
+    sss: "",
+    tin: "",
+    brand: "",
+    motorcycleModel: "",
+    yr_model: "",
+    engine_model: "", //this should be engine model (change na lang sa form - this is initially engine_number)
+    plate_number: "",
+    licenseNumber: "",
+    licenseExpiry: "",
+    emergencyContactPerson: "",
+    emergencyContactNumber: "",
+    currentWork: "",
+    bikerGroup: "",
+    referrer: "",
+    gcashNumber: "",
+    is_biker: '',
+    will_attend_seminar : "",
+    is_professional : "",
+    agree1 : "",
+    agree2 : "",
+    agree3 : "",
+    agree4 : "",
+    agree5 : "",
+    agree6 : "",
+    agree7 : "",
+    nbi_clearance_url: imageRequirement,
     police_clearance_url:imageRequirement,
     drivers_license_url: imageRequirement,
     or_url: imageRequirement,
     cr_url: imageRequirement,
     government_id_url: imageRequirement
+    // is_owner: "1",
+    // first_name: "Josiah",
+    // middle_name: "Perez",
+    // last_name: "Cavitana",
+    // house_unit: "x",
+    // barangay: "x",
+    // city_province: "x",
+    // birthday: "1998-04-15",
+    // birthplace: "x",
+    // gender: "x",
+    // mobile_number: "09075967827",
+    // email: "jaypcavitana@gmailxxxxsss.com",
+    // sss: "x",
+    // tin: "x",
+    // brand: "x",
+    // motorcycleModel: "x",
+    // yr_model: "x",
+    // engine_model: "x", //this should be engine model (change na lang sa form - this is initially engine_number)
+    // plate_number: "x",
+    // licenseNumber: "x",
+    // licenseExpiry: "2020-01-01",
+    // emergencyContactPerson: "x",
+    // emergencyContactNumber: "x",
+    // currentWork: "x",
+    // bikerGroup: "x",
+    // referrer: "x",
+    // gcashNumber: "x",
+    // is_biker: '1',
+    // will_attend_seminar : "1",
+    // is_professional : "1",
+    // agree1 : "1",
+    // agree2 : "1",
+    // agree3 : "1",
+    // agree4 : "1",
+    // agree5 : "1",
+    // agree6 : "1",
+    // agree7 : "1",
+    // nbi_clearance_url: imageRequirement,
+    // police_clearance_url:imageRequirement,
+    // drivers_license_url: imageRequirement,
+    // or_url: imageRequirement,
+    // cr_url: imageRequirement,
+    // government_id_url: imageRequirement
     });
 
     const {
