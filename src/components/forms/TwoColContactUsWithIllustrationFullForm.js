@@ -1,11 +1,12 @@
 import React, {useState} from "react";
 import tw from "twin.macro";
+import axios from 'axios'
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import EmailIllustrationSrc from "images/email-illustration.svg";
-
+import Swal from 'sweetalert2'
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
@@ -64,7 +65,31 @@ export default ({
     e.preventDefault();
 
     //axios post here
+    try{
+      axios.post('http://kidlat-api.herokuapp.com/Messages/', formData)
+      .then(res => {
+        Swal.fire({
+          title: 'Success!',
+          text: 'Message successfully sent!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        })
+      }             
+    )
+      .catch(err =>
+        Swal.fire({
+          title: 'Something is wrong!',
+          text: err,
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
+      );
+    }
+    catch (error){
+      console.log(error.response);
+    }
   }
+
   return (
     <Container>
       <TwoColumn>
