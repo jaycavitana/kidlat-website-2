@@ -45,10 +45,10 @@ export default ({
 }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
   const [formData, setFormData] = useState({
-    emailAddress: "",
-    fullName: "",
-    subject: "",
-    message: ""
+    emailAddress: "jaypcavitana@gmail.com",
+    fullName: "Josiah Cavitana",
+    subject: "Hehe",
+    message: "hello"
   });
 
   const {
