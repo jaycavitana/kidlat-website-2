@@ -131,7 +131,7 @@ const RiderApplications = ({
     brand: "x",
     motorcycleModel: "x",
     yr_model: "x",
-    engine_model: "x", //this should be engine model (change na lang sa form - this is initially engine_number)
+    engine_model: "x",
     plate_number: "x",
     licenseNumber: "x",
     licenseExpiry: "2020-01-01",
