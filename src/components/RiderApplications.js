@@ -98,7 +98,7 @@ const RiderApplications = ({
                    .catch(err =>
                      Swal.fire({
                        title: 'Something is wrong!',
-                       text: error,
+                       text: err,
                        icon: 'error',
                        confirmButtonText: 'OK'
                      }),
