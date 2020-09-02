@@ -86,14 +86,33 @@ const RiderApplications = ({
 
                  try{
                    axios.post('http://kidlat-api.herokuapp.com/Riders/', formData)
-                   .then(res =>
-                     Swal.fire({
-                       title: 'Success!',
-                       text: 'Your application has been submitted',
-                       icon: 'success',
-                       confirmButtonText: 'OK'
-                     })
-                   // console.log(res.data)
+                   .then(res => {
+                        if (res.data.message == 'Mobile number is already used.'){
+                            Swal.fire({
+                                title: 'Validation!',
+                                text: res.data.message,
+                                icon: 'warning',
+                                confirmButtonText: 'OK'
+                              })  
+                        }
+                        else if (res.data.message == 'Email address is already used.'){
+                            Swal.fire({
+                                title: 'Validation!',
+                                text: res.data.message,
+                                icon: 'warning',
+                                confirmButtonText: 'OK'
+                              })  
+                        }
+                        else {
+                            Swal.fire({
+                                title: 'Success!',
+                                text: res.data.message,
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                              })  
+                        }
+                         
+                   }             
                  )
                    .catch(err =>
                      // Swal.fire({
