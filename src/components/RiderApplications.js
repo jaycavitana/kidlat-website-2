@@ -96,13 +96,13 @@ const RiderApplications = ({
                    // console.log(res.data)
                  )
                    .catch(err =>
-                     Swal.fire({
-                       title: 'Something is wrong!',
-                       text: err,
-                       icon: 'error',
-                       confirmButtonText: 'OK'
-                     }),
-                     // console.log(err.message)
+                     // Swal.fire({
+                     //   title: 'Something is wrong!',
+                     //   text: err,
+                     //   icon: 'error',
+                     //   confirmButtonText: 'OK'
+                     // }),
+                     console.log(err)
                      // var errorMsg = error;
                    );
                    // console.log(formData);
