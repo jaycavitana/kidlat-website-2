@@ -43,7 +43,28 @@ export default ({
   textOnLeft = true,
 }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
+  const [formData, setFormData] = useState({
+    emailAddress: "",
+    fullName: "",
+    subject: "",
+    message: ""
+  });
 
+  const {
+    emailAddress,
+    fullName,
+    subject,
+    message
+  } = formData;
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name] : e.target.value });
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    //axios post here
+  }
   return (
     <Container>
       <TwoColumn>
@@ -55,11 +76,11 @@ export default ({
             {subheading && <Subheading>{subheading}</Subheading>}
             <Heading>{heading}</Heading>
             {description && <Description>{description}</Description>}
-            <Form action={formAction} method={formMethod}>
-              <Input type="email" name="email" placeholder="Your Email Address" />
-              <Input type="text" name="name" placeholder="Full Name" />
-              <Input type="text" name="subject" placeholder="Subject" />
-              <Textarea name="message" placeholder="Your Message Here" />
+            <Form action={formAction} onSubmit={(e) => onSubmit(e)} method={formMethod}>
+              <Input type="email" name="email" onChange={(e) => onChange(e)} value={emailAddress} placeholder="Your Email Address" />
+              <Input type="text" name="name" onChange={(e) => onChange(e)} value={name} placeholder="Full Name" />
+              <Input type="text" name="subject" onChange={(e) => onChange(e)} value={subject} placeholder="Subject" />
+              <Textarea name="message" onChange={(e) => onChange(e)} value={message} placeholder="Your Message Here" />
               <SubmitButton type="submit">{submitButtonText}</SubmitButton>
             </Form>
           </TextContent>
