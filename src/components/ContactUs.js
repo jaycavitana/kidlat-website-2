@@ -116,10 +116,10 @@ export default ({
               <Heading>{heading}</Heading>
               {description && <Description>{description}</Description>}
               <Form onSubmit={(e) => onSubmit(e)} >
-                <Input type="email" name="emailAddress" onChange={(e) => onChange(e)} value={emailAddress} placeholder="Your Email Address" />
-                <Input type="text" name="fullName" onChange={(e) => onChange(e)} value={fullName} placeholder="Full Name" />
-                <Input type="text" name="subject" onChange={(e) => onChange(e)} value={subject} placeholder="Subject" />
-                <Textarea name="message" onChange={(e) => onChange(e)} value={message} placeholder="Your Message Here" />
+                <Input required type="email" name="emailAddress" onChange={(e) => onChange(e)} value={emailAddress} placeholder="Your Email Address" />
+                <Input required type="text" name="fullName" onChange={(e) => onChange(e)} value={fullName} placeholder="Full Name" />
+                <Input required type="text" name="subject" onChange={(e) => onChange(e)} value={subject} placeholder="Subject" />
+                <Textarea required name="message" onChange={(e) => onChange(e)} value={message} placeholder="Your Message Here" />
                 <SubmitButton name="submit" type="submit">{submitButtonText}</SubmitButton>
               </Form>
             </TextContent>
