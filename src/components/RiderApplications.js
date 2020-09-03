@@ -93,7 +93,7 @@ const RiderApplications = ({
                                 text: res.data.message,
                                 icon: 'warning',
                                 confirmButtonText: 'OK'
-                              })  
+                              })
                         }
                         else if (res.data.message == 'Email address is already used.'){
                             Swal.fire({
@@ -101,7 +101,7 @@ const RiderApplications = ({
                                 text: res.data.message,
                                 icon: 'warning',
                                 confirmButtonText: 'OK'
-                              })  
+                              })
                         }
                         else {
                             Swal.fire({
@@ -109,19 +109,19 @@ const RiderApplications = ({
                                 text: res.data.message,
                                 icon: 'success',
                                 confirmButtonText: 'OK'
-                              })  
+                              })
                         }
-                         
-                   }             
+
+                   }
                  )
                    .catch(err =>
-                     Swal.fire({
-                       title: 'Something is wrong!',
-                       text: err,
-                       icon: 'error',
-                       confirmButtonText: 'OK'
-                     }),
-                     // console.log(err.message)
+                     // Swal.fire({
+                     //   title: 'Something is wrong!',
+                     //   text: err,
+                     //   icon: 'error',
+                     //   confirmButtonText: 'OK'
+                     // }),
+                     console.log(err)
                      // var errorMsg = error;
                    );
                    // console.log(formData);
@@ -309,7 +309,7 @@ const RiderApplications = ({
                           <label tw="block  tracking-wide text-gray-700 text-sm ">
                               NBI Clearance
                           </label>
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" onChange={handleImageAsFile} name="nbiclearance"/>
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" onChange={handleImageAsFile} name="nbiclearance" required/>
 
                       </div>
 
@@ -317,7 +317,7 @@ const RiderApplications = ({
                           <label tw="block  tracking-wide text-gray-700 text-sm ">
                               Police/Brgy. Clearance
                           </label>
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" onChange={handleImageAsFile} name="police-brgyclearance" />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" onChange={handleImageAsFile} name="police-brgyclearance" required />
 
                       </div>
 
@@ -325,7 +325,7 @@ const RiderApplications = ({
                           <label tw="block  tracking-wide text-gray-700 text-sm ">
                               Professional Driver's License
                           </label>
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" onChange={handleImageAsFile} name="DriversLiscense" />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" onChange={handleImageAsFile} name="DriversLiscense" required/>
 
                       </div>
 
@@ -337,7 +337,7 @@ const RiderApplications = ({
                           <label tw="block  tracking-wide text-gray-700 text-xs ">
                              Motorcyle's CR
                           </label>
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" onChange={handleImageAsFile} name="motorcr" />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" onChange={handleImageAsFile} name="motorcr" required />
 
                       </div>
 
@@ -345,7 +345,7 @@ const RiderApplications = ({
                           <label tw="block  tracking-wide text-gray-700 text-xs ">
                               Motorcyle's OR
                           </label>
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" onChange={handleImageAsFile} name="motoror" />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" onChange={handleImageAsFile} name="motoror" required />
 
                       </div>
 
@@ -353,7 +353,7 @@ const RiderApplications = ({
                           <label tw="block  tracking-wide text-gray-700 text-sm ">
                              Goverment ID
                           </label>
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" onChange={handleImageAsFile} name="govid" />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="file" onChange={handleImageAsFile} name="govid" required/>
 
                       </div>
 
@@ -369,8 +369,10 @@ const RiderApplications = ({
                           <label tw="block  tracking-wide text-gray-700 text-sm ">
                               Are you the registered owner of the motorcycle?
                           </label>
-                          <input  type="radio" value="1" name ="is_owner" /> YES
-                          <input tw="ml-3"type="radio" value="0" name ="is_owner" /> NO
+                          <div onChange={(e) => onChange(e)}>
+                          <input  type="radio" value="1" name ="is_owner" required/> YES
+                          <input tw="ml-3"type="radio" value="0" name ="is_owner"  /> NO
+                          </div>
 
                       </div>
 
@@ -388,17 +390,17 @@ const RiderApplications = ({
                   <div tw="flex flex-wrap -mx-3 mb-6">
 
                       <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  onChange={(e) => onChange(e)} value={first_name} type="text" placeholder="First Name" name="first_name" />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  onChange={(e) => onChange(e)} value={first_name} type="text" placeholder="First Name" name="first_name" required />
 
                       </div>
 
                       <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  onChange={(e) => onChange(e)} value={middle_name} type="text" placeholder="Middle Name" name="middle_name" />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  onChange={(e) => onChange(e)} value={middle_name} type="text" placeholder="Middle Name" name="middle_name" required />
 
                       </div>
 
                       <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  onChange={(e) => onChange(e)} value={last_name} type="text" placeholder="Last Name" name="last_name" />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  onChange={(e) => onChange(e)} value={last_name} type="text" placeholder="Last Name" name="last_name" required />
 
                       </div>
                   </div>
@@ -412,17 +414,17 @@ const RiderApplications = ({
 
                       <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
 
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text"  onChange={(e) => onChange(e)} value={house_unit} placeholder="House/Unit  Number, Street" name="house_unit"/>
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text"  onChange={(e) => onChange(e)} value={house_unit} placeholder="House/Unit  Number, Street" name="house_unit" required  />
 
                       </div>
 
                       <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" onChange={(e) => onChange(e)} value={barangay} placeholder="Barangay" name="barangay"/>
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" onChange={(e) => onChange(e)} value={barangay} placeholder="Barangay" name="barangay" required/>
 
                       </div>
 
                       <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="City, Province" onChange={(e) => onChange(e)} value={city_province} name="city_province"/>
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="City, Province" onChange={(e) => onChange(e)} value={city_province} name="city_province" required/>
 
                       </div>
 
@@ -443,12 +445,12 @@ const RiderApplications = ({
                       <label tw="block  tracking-wide text-gray-700 text-sm ">
                               Birthday
                           </label>
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="date" onChange={(e) => onChange(e)} value={birthday} placeholder="Birthday" name="birthday" />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="date" onChange={(e) => onChange(e)} value={birthday} placeholder="Birthday" name="birthday" required />
 
                       </div>
 
                       <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" onChange={(e) => onChange(e)} value={birthplace} placeholder="Birthplace" name="birthplace"/>
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" onChange={(e) => onChange(e)} value={birthplace} placeholder="Birthplace" name="birthplace" required/>
 
                       </div>
 
@@ -463,18 +465,19 @@ const RiderApplications = ({
                       <label tw="block  tracking-wide text-gray-700 text-sm ">
                               Gender
                           </label>
-                          <input  type="radio" value="Male" name="gender" /> Male
-                          <input tw="ml-3"type="radio" value="Female" name="gender "/> Female
+                          <div onChange={(e) => onChange(e)}>
+                          <input  type="radio" value="Male" name ="gender" required/> Male
+                          <input tw="ml-3"type="radio" value="Female" name ="gender"  /> Female
+                          </div>
+                      </div>
+
+                      <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="Mobile Number" onChange={(e) => onChange(e)} value={mobile_number} name="mobile_number" required />
 
                       </div>
 
                       <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="Mobile Number" onChange={(e) => onChange(e)} value={mobile_number} name="mobile_number" />
-
-                      </div>
-
-                      <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="Email" onChange={(e) => onChange(e)} value={email} name="email"/>
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="email" placeholder="Email" onChange={(e) => onChange(e)} value={email} name="email" required/>
 
                       </div>
 
@@ -485,12 +488,12 @@ const RiderApplications = ({
                   <div tw="flex flex-wrap -mx-4 mb-6">
 
                       <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="SSS" onChange={(e) => onChange(e)} value={sss} name="sss"  />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="SSS" onChange={(e) => onChange(e)} value={sss} name="sss" required  />
 
                       </div>
 
                       <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="TIN No" onChange={(e) => onChange(e)} value={tin} name="tin"/>
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="TIN No" onChange={(e) => onChange(e)} value={tin} name="tin" required/>
 
                       </div>
 
@@ -507,25 +510,25 @@ const RiderApplications = ({
 
                       <div tw="w-full md:w-1/4 px-3 mb-6 md:mb-0 mt-2">
 
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" placeholder="Motorcycle Brand" onChange={(e) => onChange(e)} value={brand} name="brand" />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" placeholder="Motorcycle Brand" onChange={(e) => onChange(e)} value={brand} name="brand" required />
 
                       </div>
 
                       <div tw="w-full md:w-1/4 px-3 mb-6 md:mb-0 mt-2">
 
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" placeholder="Motorcylcle Model" onChange={(e) => onChange(e)} value={motorcycleModel} name="motorcycleModel"/>
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" placeholder="Motorcylcle Model" onChange={(e) => onChange(e)} value={motorcycleModel} name="motorcycleModel" required/>
 
                       </div>
 
                       <div tw="w-full md:w-1/4 px-3 mb-6 md:mb-0 mt-2">
 
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" placeholder="Year Model" onChange={(e) => onChange(e)} value={yr_model} name="yr_model" />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" placeholder="Year Model" onChange={(e) => onChange(e)} value={yr_model} name="yr_model" required />
 
                       </div>
 
                       <div tw="w-full md:w-1/4 px-3 mb-6 md:mb-0 mt-2">
 
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" placeholder="Motorcycle Engine Number" onChange={(e) => onChange(e)} value={engine_model} name="engine_model"/>
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" placeholder="Motorcycle Engine Number" onChange={(e) => onChange(e)} value={engine_model} name="engine_model" required/>
 
                       </div>
 
@@ -538,7 +541,7 @@ const RiderApplications = ({
 
                       <div tw="w-full md:w-1/4 px-3 mb-6 md:mb-0 mt-2">
 
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" placeholder="Plate Number or MV FILE Number" onChange={(e) => onChange(e)} value={plate_number} name="plate_number"/>
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" placeholder="Plate Number or MV FILE Number" onChange={(e) => onChange(e)} value={plate_number} name="plate_number" required/>
 
                       </div>
 
@@ -574,14 +577,15 @@ const RiderApplications = ({
                           <label tw="block  tracking-wide text-gray-700 text-sm ">
                                   Driver's License
                               </label>
-                              <input  type="radio" value="professional"name="professional" /> Professional
-                              <input tw="ml-3"type="radio" value="non-professional" name="nonprofressional" /> Non-professional
-
+                              <div onChange={(e) => onChange(e)}>
+                              <input  type="radio" value="1" name ="is_professional" required/> Professional
+                              <input tw="ml-3"type="radio" value="0" name ="is_professional"  /> Non-professional
+                              </div>
                       </div>
 
                       <div tw="w-full md:w-1/3 px-3 mb-6 md:mb-0 mt-2">
 
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" onChange={(e) => onChange(e)} value={licenseNumber} placeholder="License Number" name="licenseNumber"/>
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="text" onChange={(e) => onChange(e)} value={licenseNumber} placeholder="License Number" name="licenseNumber" required/>
 
                       </div>
 
@@ -589,7 +593,7 @@ const RiderApplications = ({
                           <label tw="block  tracking-wide text-gray-700 text-sm ">
                               License Expiry
                           </label>
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="date" onChange={(e) => onChange(e)} value={licenseExpiry} name="licenseExpiry" />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white mt-0"  type="date" onChange={(e) => onChange(e)} value={licenseExpiry} name="licenseExpiry" required />
 
                       </div>
 
@@ -604,12 +608,12 @@ const RiderApplications = ({
                   <div tw="flex flex-wrap -mx-2 mb-6">
 
                       <div tw="w-full md:w-1/2 px-3 mb-6 md:mb-0 mt-2">
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="Full Name" onChange={(e) => onChange(e)} value={emergencyContactPerson} name="emergencyContactPerson"/>
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="Full Name" onChange={(e) => onChange(e)} value={emergencyContactPerson} name="emergencyContactPerson" required/>
 
                       </div>
 
                       <div tw="w-full md:w-1/2 px-3 mb-6 md:mb-0 mt-2">
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="Contact Number" onChange={(e) => onChange(e)} value={emergencyContactNumber} name="emergencyContactNumber" />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="Contact Number" onChange={(e) => onChange(e)} value={emergencyContactNumber} name="emergencyContactNumber" required />
 
                       </div>
                   </div>
@@ -625,7 +629,7 @@ const RiderApplications = ({
                           <label tw="block  tracking-wide text-gray-700 text-sm ">
                               What is your current work?
                           </label>
-                          <input  type="radio" value="no other work" name="nowork"/> I don't have work
+                          <input  type="radio" value="no other work" name="nowork"  onChange={(e) => onChange(e)}/> I don't have work
                           <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="What is your work?" onChange={(e) => onChange(e)} value={currentWork} name="currentWork" />
 
                       </div>
@@ -634,8 +638,14 @@ const RiderApplications = ({
                           <label tw="block  tracking-wide text-gray-700 text-sm ">
                               Are you a member of a biker group?
                           </label>
-                          <input  type="radio" value="not bike member" name="notbikermember"/> NO
-                          <input tw="ml-3"type="radio" value="bike member" name="yesbikermember" /> YES
+                          <div onChange={(e) => onChange(e)}>
+                          <input  type="radio" value="0" name="is_biker" required/> NO
+                          <input tw="ml-3"type="radio" value="1" name="is_biker" /> YES
+                          </div>
+
+
+
+
                           <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="What is the name of your group?" onChange={(e) => onChange(e)} value={bikerGroup} name="bikerGroup" />
 
                       </div>
@@ -656,7 +666,7 @@ const RiderApplications = ({
                           <label tw="block  tracking-wide text-gray-700 text-sm ">
                               What is your Gcash Kidlat Phone Number?
                           </label>
-                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="Gcash Mobile Number" onChange={(e) => onChange(e)} value={gcashNumber} name="gcashNumber" />
+                          <Input tw="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" placeholder="Gcash Mobile Number" onChange={(e) => onChange(e)} value={gcashNumber} name="gcashNumber" required />
 
                       </div>
 
@@ -668,8 +678,8 @@ const RiderApplications = ({
                           <label tw="block  tracking-wide text-gray-700 text-sm ">
                               When and Where you can attend Kidlat Seminar?
                           </label>
-                          <input  type="radio" value="texted for seminar" name="iftexted"/> When Kidlat texted me
-                          <input tw="ml-3"type="radio" value="not yet sure" name="notsure" /> Not yet sure
+                          <input  type="radio" value="1" name="will_attend_seminar" required/> When Kidlat texted me
+                          <input tw="ml-3"type="radio" value="0" name="will_attend_seminar" /> Not yet sure
 
                       </div>
 
