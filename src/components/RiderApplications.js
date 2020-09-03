@@ -109,6 +109,8 @@ const RiderApplications = ({
                                 text: res.data.message,
                                 icon: 'success',
                                 confirmButtonText: 'OK'
+                              }).then(() => {
+                                window.location.reload();
                               })
                         }
 
@@ -226,6 +228,7 @@ const RiderApplications = ({
     // government_id_url: imageRequirement
     });
 
+
     const {
       is_owner,
       first_name,
@@ -272,9 +275,24 @@ const RiderApplications = ({
       government_id_url
       } = formData;
 
+      const checkboxHandler = (e) => {
+
+      }
       const onChange = (e) =>
       setFormData ({...formData, [e.target.name] : e.target.value});
 
+      const onChangeCheckbox = (e) => {
+        var value = ""
+      if(e.target.checked){
+                var value = "1"
+      }
+
+      else{
+                var value = "0"
+      }
+
+      setFormData ({...formData, [e.target.name] : value});
+     }
 
 
       console.log(formData);
@@ -690,42 +708,42 @@ const RiderApplications = ({
 
                   <div tw="flex flex-wrap -mx-3 mb-3 mt-6">
                       <div tw="w-full px-3 text-xs" >
-                          <input tw="ml-3" type="checkbox" value="agree" name="agree7" /> In addition to the national licensing policy or the requirements of any authority, this company may conduct a background check.
+                          <input tw="ml-3" type="checkbox"  value="1" onChange={(e) => onChangeCheckbox(e)} value={agree1} name="agree1" /> In addition to the national licensing policy or the requirements of any authority, this company may conduct a background check.
                       </div>
 
                   </div>
 
                   <div tw="flex flex-wrap -mx-3 mb-3">
                       <div tw="w-full px-3 text-xs">
-                          <input tw="ml-3"type="checkbox" value="agree" name="agree1" /> I declare that I have personally read and completed the Kidlat application and that the information I have written is true to the best of my knowledge.
+                          <input tw="ml-3"type="checkbox" value="1" onChange={(e) => onChangeCheckbox(e)} value={agree2} name="agree2" /> I declare that I have personally read and completed the Kidlat application and that the information I have written is true to the best of my knowledge.
                       </div>
 
                   </div>
 
                   <div tw="flex flex-wrap -mx-3 mb-3">
                       <div tw="w-full px-3 text-xs" >
-                          <input tw="ml-3"type="checkbox" value="agree" name="agree2" /> This company reserves the right to remove the biker if it fails the credit and community investigation or does not comply with company standards.
+                          <input tw="ml-3"type="checkbox" value="1" onChange={(e) => onChangeCheckbox(e)} value={agree3} name="agree3" /> This company reserves the right to remove the biker if it fails the credit and community investigation or does not comply with company standards.
                       </div>
 
                   </div>
 
                   <div tw="flex flex-wrap -mx-3 mb-3">
                       <div tw="w-full px-3 text-xs">
-                          <input tw="ml-3"type="checkbox" value="agree" name="agree3" /> I understand that this company may share information with other agencies or individuals to assist in crime prevention as needed.
+                          <input tw="ml-3"type="checkbox" value="1" onChange={(e) => onChangeCheckbox(e)} value={agree4} name="agree4" /> I understand that this company may share information with other agencies or individuals to assist in crime prevention as needed.
                       </div>
 
                   </div>
 
                   <div tw="flex flex-wrap -mx-3 mb-3">
                       <div tw="w-full px-3 text-xs">
-                          <input tw="ml-3"type="checkbox" value="agree" name="agree4" /> I agree and I will abide by such guidelines of this company.
+                          <input tw="ml-3"type="checkbox" value="1"onChange={(e) => onChangeCheckbox(e)} value={agree5} name="agree5" /> I agree and I will abide by such guidelines of this company.
                       </div>
 
                   </div>
 
                   <div tw="flex flex-wrap -mx-3 mb-3">
                       <div tw="w-full px-3 text-xs">
-                          <input tw="ml-3"type="checkbox" value="agree" name="agree5" /> I agree to be responsible for the tax service or commission that the company or the government may charge. This can be deducted from the money I receive.
+                          <input tw="ml-3"type="checkbox" value="1" onChange={(e) => onChangeCheckbox(e)} value={agree6} name="agree6" /> I agree to be responsible for the tax service or commission that the company or the government may charge. This can be deducted from the money I receive.
                       </div>
 
                   </div>
@@ -733,7 +751,7 @@ const RiderApplications = ({
 
                   <div tw="flex flex-wrap -mx-3 mb-3">
                       <div tw="w-full px-3 text-xs">
-                          <input tw="ml-3"type="checkbox" value="agree" name="agree6" /> I understand that my personal information may be shared with third party service providers, business partners, and affiliated companies, or if requested by the authorities for legal purposes.
+                          <input tw="ml-3"type="checkbox" value="1" onChange={(e) => onChangeCheckbox(e)} value={agree7} name="agree7" /> I understand that my personal information may be shared with third party service providers, business partners, and affiliated companies, or if requested by the authorities for legal purposes.
                       </div>
 
                   </div>

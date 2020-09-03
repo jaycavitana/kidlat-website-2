@@ -85,6 +85,8 @@ export default ({
             text: 'Message successfully sent!',
             icon: 'success',
             confirmButtonText: 'OK'
+          }).then(() => {
+            window.location.reload();
           })
         }
       )
