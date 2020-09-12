@@ -53,90 +53,6 @@ const RiderApplications = ({
       setImageAsFile(imageFile => (image))
   }
 
-
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-
-    if(imageAsFile === '' ) {
-      console.error(`not an image, the image file is a ${typeof(imageAsFile)}`)
-      Swal.fire({
-        title: 'Something is wrong!',
-        text: "You need to upload the documents",
-        icon: 'error',
-        confirmButtonText: 'OK'
-      })
-    }
-
-    const uploadTask = storage.ref(`/images/requirements/${imageAsFile.name}`).put(imageAsFile)
-    uploadTask.on('state_changed',
-    (snapShot) => {
-      //takes a snap shot of the process as it is happening
-      console.log(snapShot)
-    }, (err) => {
-      //catches the errors
-      console.log(err)
-    }, () => {
-      // gets the functions from storage refences the image storage in firebase by the children
-      // gets the download url then sets the image from firebase as the value for the imgUrl key:
-      storage.ref('images/requirements').child(imageAsFile.name).getDownloadURL()
-       .then(fireBaseUrl => {
-         setImageAsUrl(prevObject => ({...prevObject, imgUrl: fireBaseUrl}))
-                 // console.log(fireBaseUrl)
-
-                 try{
-                   axios.post('http://kidlat-api.herokuapp.com/Riders/', formData)
-                   .then(res => {
-                        if (res.data.message == 'Mobile number is already used.'){
-                            Swal.fire({
-                                title: 'Validation!',
-                                text: res.data.message,
-                                icon: 'warning',
-                                confirmButtonText: 'OK'
-                              })
-                        }
-                        else if (res.data.message == 'Email address is already used.'){
-                            Swal.fire({
-                                title: 'Validation!',
-                                text: res.data.message,
-                                icon: 'warning',
-                                confirmButtonText: 'OK'
-                              })
-                        }
-                        else {
-                            Swal.fire({
-                                title: 'Success!',
-                                text: res.data.message,
-                                icon: 'success',
-                                confirmButtonText: 'OK'
-                              }).then(() => {
-                                window.location.reload();
-                              })
-                        }
-
-                   }
-                 )
-                   .catch(err =>
-                     // Swal.fire({
-                     //   title: 'Something is wrong!',
-                     //   text: err,
-                     //   icon: 'error',
-                     //   confirmButtonText: 'OK'
-                     // }),
-                     console.log(err)
-                     // var errorMsg = error;
-                   );
-                   // console.log(formData);
-                 }catch (error){
-                   console.log(error.response);
-                 }
-       })
-    })
-
-
-
-  }
-
   var imageRequirement = imageAsUrl.imgUrl;
   console.log(imageRequirement)
   const [formData, setFormData] = useState({
@@ -177,12 +93,12 @@ const RiderApplications = ({
     agree5 : "",
     agree6 : "",
     agree7 : "",
-    nbi_clearance_url: imageRequirement,
-    police_clearance_url:imageRequirement,
-    drivers_license_url: imageRequirement,
-    or_url: imageRequirement,
-    cr_url: imageRequirement,
-    government_id_url: imageRequirement
+    nbi_clearance_url: "",
+    police_clearance_url:"",
+    drivers_license_url: "",
+    or_url: "",
+    cr_url: "",
+    government_id_url: ""
     // is_owner: "1",
     // first_name: "Josiah",
     // middle_name: "Perez",
@@ -227,7 +143,6 @@ const RiderApplications = ({
     // cr_url: imageRequirement,
     // government_id_url: imageRequirement
     });
-
 
     const {
       is_owner,
@@ -275,6 +190,7 @@ const RiderApplications = ({
       government_id_url
       } = formData;
 
+
       const checkboxHandler = (e) => {
 
       }
@@ -294,6 +210,96 @@ const RiderApplications = ({
       setFormData ({...formData, [e.target.name] : value});
      }
 
+     const onSubmit = async (e) => {
+       e.preventDefault();
+
+       if(imageAsFile === '' ) {
+         console.error(`not an image, the image file is a ${typeof(imageAsFile)}`)
+         Swal.fire({
+           title: 'Something is wrong!',
+           text: "You need to upload the documents",
+           icon: 'error',
+           confirmButtonText: 'OK'
+         })
+       }
+
+       const uploadTask = storage.ref(`/images/requirements/${imageAsFile.name}`).put(imageAsFile)
+       uploadTask.on('state_changed',
+       (snapShot) => {
+         //takes a snap shot of the process as it is happening
+         console.log(snapShot)
+       }, (err) => {
+         //catches the errors
+         console.log(err)
+       }, () => {
+         // gets the functions from storage refences the image storage in firebase by the children
+         // gets the download url then sets the image from firebase as the value for the imgUrl key:
+         storage.ref('images/requirements').child(imageAsFile.name).getDownloadURL()
+          .then(fireBaseUrl => {
+            setImageAsUrl(prevObject => ({...prevObject, imgUrl: fireBaseUrl}))
+                    // console.log(fireBaseUrl)
+                    const urls = {
+
+                    }
+                    setFormData({...formData,
+                      nbi_clearance_url: fireBaseUrl,
+                          police_clearance_url: fireBaseUrl,
+                          drivers_license_url: fireBaseUrl,
+                          or_url: fireBaseUrl,
+                          cr_url: fireBaseUrl,
+                          government_id_url: fireBaseUrl})
+                    try{
+                      axios.post('http://kidlat-api.herokuapp.com/Riders/', formData)
+                      .then(res => {
+                           if (res.data.message == 'Mobile number is already used.'){
+                               Swal.fire({
+                                   title: 'Validation!',
+                                   text: res.data.message,
+                                   icon: 'warning',
+                                   confirmButtonText: 'OK'
+                                 })
+                           }
+                           else if (res.data.message == 'Email address is already used.'){
+                               Swal.fire({
+                                   title: 'Validation!',
+                                   text: res.data.message,
+                                   icon: 'warning',
+                                   confirmButtonText: 'OK'
+                                 })
+                           }
+                           else {
+                               Swal.fire({
+                                   title: 'Success!',
+                                   text: res.data.message,
+                                   icon: 'success',
+                                   confirmButtonText: 'OK'
+                                 }).then(() => {
+                                   window.location.reload();
+                                 })
+                           }
+
+                      }
+                    )
+                      .catch(err =>
+                        // Swal.fire({
+                        //   title: 'Something is wrong!',
+                        //   text: err,
+                        //   icon: 'error',
+                        //   confirmButtonText: 'OK'
+                        // }),
+                        console.log(err)
+                        // var errorMsg = error;
+                      );
+                      // console.log(formData);
+                    }catch (error){
+                      console.log(error.response);
+                    }
+          })
+       })
+
+
+
+     }
 
       console.log(formData);
 
